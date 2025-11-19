@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 4 Excercises</title>
+    <style>
+      .btn-on {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 14px 21px;
+      }
+
+      .btn-off {
+        background-color: rgb(220, 53, 69);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 14px 21px;
+      }
+
+      body {
+        font-family: Arial;
+      }
+
+      .title {
+        font-size: 25px;
+      }
+
+      .login-input {
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 200px;
+      }
+
+      .login-button {
+        background-color: rgb(0, 123, 255);
+        color: white;
+        margin-right: 5px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .show-button {
+        background-color: rgb(0, 151, 70);
+        color: white;
+        margin-left: 5px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      //Exercise 4C
+      /*
+      function App() {
+        const [isButton, setIsButton] = React.useState(true);
+
+        function clickButton() {
+          setIsButton(!isButton);
+        }
+
+        return (
+          <>
+            <button
+              className={isButton === true ? 'btn-on' : 'btn-off'}
+              onClick={clickButton}
+            >
+              {isButton ? 'ON' : 'OFF'}
+            </button>
+          </>
+        );
+      }
+      */
+
+      //Exercise 4d
+      /*
+      function LoginForm() {
+        const [display, setDisplay] = React.useState(false);
+
+        function switchPass() {
+          setDisplay(!display);
+        }
+
+        return (
+          <>
+            <div>
+              <input placeholder="Email" className="login-input" />
+            </div>
+            <div>
+              <input
+                placeholder="Password"
+                type={display ? 'text' : 'password'}
+                className="login-input"
+              />
+              <button onClick={switchPass} className="show-button">
+                {display ? 'Hide' : 'Show'}
+              </button>
+            </div>
+            <button className="login-button">Login</button>
+            <button className="login-button">Sign up</button>
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <p className="title">Hello, welcome to my website</p>
+            <LoginForm />
+          </>
+        );
+      }
+
+      */
+
+      //Exercise 4f
+      function App() {
+        const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+
+        React.useEffect(() => {
+          setInterval(() => {
+            // The purpose of this exercise is to see how the
+            // dependency array affects how many times useEffect()
+            // runs. Notice that it runs a lot more often without
+            // the dependency array.
+            console.log('run code');
+            setTime(dayjs().format('HH:mm:ss'));
+          }, 1000);
+
+          // Important: make sure to give React.useEffect()
+          // a dependency array of [] so it only runs once!
+        }, []);
+
+        return <p>Current time: {time}</p>;
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
