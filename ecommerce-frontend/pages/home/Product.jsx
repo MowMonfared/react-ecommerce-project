@@ -8,9 +8,8 @@ export function Product({ product, loadCart }) {
   const addToCart = async () => {
     await axios.post('/api/cart-items', {
       productId: product.id,
-      quantity: quantity,
+      quantity,
     });
-
     await loadCart();
   };
 
@@ -20,7 +19,7 @@ export function Product({ product, loadCart }) {
   };
 
   return (
-    <div className="product-container">
+    <div className="product-container" data-testid="product-container">
       <div className="product-image-container">
         <img
           className="product-image"
